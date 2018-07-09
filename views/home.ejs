@@ -1,0 +1,17 @@
+<% include partials/top %>
+
+<% if (typeof flash !== 'undefined') { %>
+
+<div class="topbar flash-message">
+  <%= flash %>
+</div>
+
+<% } // end if %>
+
+<div class="jumbotron">
+  <h1>This is YelpCamp</h1>
+  <p>&nbsp;</p>
+  <p><a class="btn btn-lg btn-primary" href="/campgrounds">View campgrounds</a></p>
+</div>
+
+<% include partials/bottom %>

@@ -1,0 +1,42 @@
+/*=====================================
+ * BOOTSTRAP FIXUPS
+ */
+
+img {
+  max-width: 100%;
+  width: auto;
+  height: auto;
+}
+
+.well h1, .well h2, .well h3, .well h4, .well h5, .well h6 {
+  margin-top: 0;
+}
+
+/*=====================================
+ * TOPBAR
+ */
+
+.flash-message {
+  background: #ffdc5a; /* soft yellow */
+  padding: 10px;
+  color: black;
+  font-size: 14px;
+  line-height: 1.2;
+  text-align: center;
+}
+
+/*=====================================
+ * CAMPGROUNDS
+ */
+
+@media (min-width: 768px) {
+  .new-campground-form h4 {
+    margin-bottom: 15px;
+  }
+  .new-campground-form .form-group {
+    margin-right: 15px;
+  }
+  .new-campground-form .form-control {
+    width: 200px;
+  }
+}
