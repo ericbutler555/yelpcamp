@@ -30,13 +30,14 @@ img {
  */
 
 @media (min-width: 768px) {
+  .campgrounds {
+    display: flex;
+    flex-wrap: wrap;
+  }
   .new-campground-form h4 {
     margin-bottom: 15px;
   }
-  .new-campground-form .form-group {
-    margin-right: 15px;
-  }
-  .new-campground-form .form-control {
-    width: 200px;
+  .new-campground-form .btn {
+    margin-top: 25px;
   }
 }

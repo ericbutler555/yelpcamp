@@ -39,7 +39,7 @@ app.get('/campgrounds', function(req, res){
       res.redirect('/');
     } else {
       // render the template, with "campgrounds" now populated by the returned db data:
-      res.render('campgrounds.ejs', {
+      res.render('campgrounds/index.ejs', {
         campgrounds: data
       });
     }
@@ -49,7 +49,8 @@ app.get('/campgrounds', function(req, res){
 app.post('/campgrounds', function(req, res){
   Campground.create({
     name: req.body.campName,
-    image: req.body.campImage
+    image: req.body.campImage,
+    description: req.body.campDescription
   }, function(error, data){
     if (error) {
       console.log(error);
@@ -67,7 +68,7 @@ app.get('/campgrounds/:id', function(req, res){
       console.log(error);
       res.redirect('/campgrounds');
     } else {
-      res.render('campground.ejs', {
+      res.render('campgrounds/show.ejs', {
         campground: data
       });
     }

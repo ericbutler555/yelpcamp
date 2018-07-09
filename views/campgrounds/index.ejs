@@ -1,0 +1,54 @@
+<% include ../partials/top %>
+
+<h1 class="page-header">Campgrounds</h1>
+
+<div class="row campgrounds">
+
+  <div class="col-md-8 col-lg-6">
+    <div class="well well-lg new-campground-form">
+      <h4>Add a new campground</h4>
+      <form class="row" action="/campgrounds" method="post">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="campName">Name</label>
+            <input class="form-control" type="text" name="campName" id="campName" placeholder="Enter the name of the campground" value="">
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="campImage">Image URL</label>
+            <input class="form-control" type="text" name="campImage" id="campImage" placeholder="Provide a URL for the image" value="">
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="campDescription">Description</label>
+            <textarea class="form-control" name="campDescription" id="campDescription" placeholder="Add a description for this campground"></textarea>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <input class="btn btn-lg btn-info" type="submit" value="Add">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+<% for (var i = 0, j = campgrounds.length; i < j; i++) { %>
+
+  <div class="col-sm-6 col-md-4 col-lg-3 campground">
+    <div class="thumbnail">
+      <a href="/campgrounds/<%= campgrounds[i]._id %>"><img src="<%= campgrounds[i].image %>" alt="<%= campgrounds[i].name %>"></a>
+      <div class="caption">
+        <h4><%= campgrounds[i].name %></h4>
+        <a class="btn btn-default" href="/campgrounds/<%= campgrounds[i]._id %>">View Details</a>
+      </div>
+    </div>
+  </div>
+
+<% } // end for loop %>
+
+</div>
+
+<% include ../partials/bottom %>
