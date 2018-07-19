@@ -33,8 +33,13 @@
           <li><a href="/campgrounds">Campgrounds</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
+<% if (!user) { %>
           <li><a href="/login">Login</a></li>
-          <li><a href="/join">Join</a></li>
+          <li><a href="/register">Join</a></li>
+<% } else { %>
+          <li><a>Signed in as <%= user.username.charAt(0).toUpperCase() + user.username.slice(1) %></a></li>
+          <li><a href="/logout">Logout</a></li>
+<% } // end else %>
         </ul>
       </div>
 
