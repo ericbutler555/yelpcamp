@@ -3,6 +3,15 @@ var router = express.Router();
 
 var Campground = require('../models/campground');
 
+// define auth middleware:
+function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated()){
+    return next();
+  } else {
+    res.redirect('/login');
+  }
+}
+
 // campgrounds index (and new)
 router.get('/campgrounds', function(req, res){
   // get all campgrounds from db:
@@ -20,11 +29,15 @@ router.get('/campgrounds', function(req, res){
 });
 
 // campgrounds create
-router.post('/campgrounds', function(req, res){
+router.post('/campgrounds', isLoggedIn, function(req, res){
   Campground.create({
     name: req.body.campName,
     image: req.body.campImage,
-    description: req.body.campDescription
+    description: req.body.campDescription,
+    author: {
+      id: req.user._id,
+      username: req.user.username
+    }
   }, function(error, data){
     if (error) {
       console.log(error);

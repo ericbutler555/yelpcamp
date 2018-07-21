@@ -43,6 +43,9 @@
       <div class="caption">
         <h4><%= campgrounds[i].name %></h4>
         <a class="btn btn-default" href="/campgrounds/<%= campgrounds[i]._id %>">View Details</a>
+<% if (campgrounds[i].author.username) { %>
+        <p class="campground-author">Submitted by <%= campgrounds[i].author.username %></p>
+<% } // end if %>
       </div>
     </div>
   </div>

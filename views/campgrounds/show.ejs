@@ -32,7 +32,11 @@
       <div class="comment">
         <p>
           &ldquo;<%= comment.text %>&rdquo;<br>
-          <small>&mdash;<%= comment.author %>, 10 days ago</small>
+<% if (comment.author.username) { %>
+          <small>&mdash;<%= comment.author.username.charAt(0).toUpperCase() + comment.author.username.slice(1) %>, 10 days ago</small>
+<% } else { %>
+          <small>&mdash;unknown, 10 days ago</small>
+<% } // end else %>
         </p>
       </div>
 
