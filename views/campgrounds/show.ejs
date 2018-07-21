@@ -17,9 +17,16 @@
       <img src="<%= campground.image %>" alt="<%= campground.name %>">
       <div class="caption">
         <p class="pull-right text-success campground-price"><strong>$9.00/night</strong></p>
-        <h1><a href="#"><%= campground.name %></a></h1>
+        <h1><%= campground.name %></h1>
         <p><%= campground.description %></p>
-        <p class=""><a class="btn btn-sm btn-warning" href="/campgrounds/<%= campground._id %>/edit">Edit</a></p>
+<% if (user && campground.author.id && campground.author.id.equals(user._id)) { // NOTE: "user" here was invented in app.js using `res.locals.user` %>
+        <div>
+          <a class="btn btn-sm btn-warning" href="/campgrounds/<%= campground._id %>/edit">Edit</a>
+          <form action="/campgrounds/<%= campground._id %>?_method=delete" method="post" style="display:inline;">
+            <input type="submit" class="btn btn-sm btn-danger" value="Delete">
+          </form>
+        </div>
+<% } // end if %>
       </div>
     </div>
 
