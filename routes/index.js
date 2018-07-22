@@ -22,17 +22,19 @@ router.post('/register', function(req, res){
   }), req.body.password, function(err, data){
     if (err) {
       console.log(err);
-      res.render('register.ejs');
+      req.flash('danger', err.message);
+      res.redirect('/register');
     } else {
       // log user in via local-style auth:
       passport.authenticate('local')(req, res, function(){
+        req.flash('success', 'Thanks for signing up!');
         res.redirect('/campgrounds');
       });
     }
   });
 });
 
-// login
+// login form
 router.get('/login', function(req, res){
   res.render('login.ejs');
 });
@@ -40,12 +42,15 @@ router.get('/login', function(req, res){
 // login post
 router.post('/login', passport.authenticate('local', {
   successRedirect: '/campgrounds',
-  failureRedirect: '/login'
+  failureRedirect: '/login',
+  successFlash: 'Welcome back!',
+  failureFlash: true
 }), function(req, res){
 });
 
 // logout
 router.get('/logout', function(req, res){
+  req.flash('success', 'You are now logged out.');
   req.logout();
   res.redirect('/');
 });

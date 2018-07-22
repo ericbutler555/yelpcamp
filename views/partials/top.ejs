@@ -47,3 +47,15 @@
   </nav>
 
   <div class="container">
+
+<%
+if (flash_message) {
+  for (var i in flash_message) {
+%>
+    <div class="alert alert-<%= i %>" role="alert">
+      <%= flash_message[i] %>
+    </div>
+<%
+  } // end for
+} // end if
+%>

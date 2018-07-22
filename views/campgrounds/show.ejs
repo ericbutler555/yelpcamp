@@ -16,7 +16,7 @@
     <div class="thumbnail campground-detail">
       <img src="<%= campground.image %>" alt="<%= campground.name %>">
       <div class="caption">
-        <p class="pull-right text-success campground-price"><strong>$9.00/night</strong></p>
+        <p class="pull-right text-success campground-price"><strong>$<%= campground.price %>/night</strong></p>
         <h1><%= campground.name %></h1>
         <p><%= campground.description %></p>
 <% if (user && campground.author.id && campground.author.id.equals(user._id)) { // NOTE: "user" here was invented in app.js using `res.locals.user` %>

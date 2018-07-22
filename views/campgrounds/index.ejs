@@ -26,9 +26,15 @@
             <textarea class="form-control" name="campDescription" id="campDescription" placeholder="Add a description for this campground"></textarea>
           </div>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-3">
           <div class="form-group">
-            <input class="btn btn-lg btn-info" type="submit" value="Add">
+            <label for="campPrice">Price</label>
+            <input class="form-control" type="number" name="campPrice" id="campPrice" placeholder="In USD" value="" min="1" step="0.01">
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="form-group">
+            <input class="btn btn-info" type="submit" value="Add">
           </div>
         </div>
       </form>
@@ -42,7 +48,10 @@
       <a href="/campgrounds/<%= campgrounds[i]._id %>"><img src="<%= campgrounds[i].image %>" alt="<%= campgrounds[i].name %>"></a>
       <div class="caption">
         <h4><%= campgrounds[i].name %></h4>
-        <a class="btn btn-default" href="/campgrounds/<%= campgrounds[i]._id %>">View Details</a>
+        <p class="text-success">
+          <b>$<%= campgrounds[i].price %>/night</b>
+          <a class="btn btn-sm btn-default" href="/campgrounds/<%= campgrounds[i]._id %>">View Details</a>
+        </p>
 <% if (campgrounds[i].author.username) { %>
         <p class="campground-author">Submitted by <%= campgrounds[i].author.username %></p>
 <% } // end if %>

@@ -6,6 +6,7 @@ var methodOverride = require('method-override');
 var passport = require('passport');
 var localStrategy = require('passport-local');
 var expressSession = require('express-session');
+var flash = require('connect-flash');
 
 // connect to the MongoDB database:
 mongoose.connect('mongodb://localhost/yelpcamp');
@@ -29,6 +30,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // enable PUT and DELETE requests by appending `?_method=<put|delete>` on form action:
 app.use(methodOverride('_method'));
+
+// enable flash messages (must come BEFORE passport init):
+app.use(flash());
 
 // bring in models:
 var Campground = require('./models/campground');
@@ -57,6 +61,7 @@ app.use(function(req, res, next){
   // res.locals stores data across all routes
   // req.user is built-in passport data storage for user info
   res.locals.user = req.user;
+  res.locals.flash_message = req.flash();
   next();
 });
 
