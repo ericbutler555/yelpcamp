@@ -45,9 +45,17 @@
           <small>&mdash;unknown, 10 days ago</small>
 <% } // end else %>
         </p>
+<% if (user && comment.author.id && comment.author.id.equals(user._id)) { %>
+        <div style="margin:0 0 10px;">
+          <a class="btn btn-xs btn-link" href="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>/edit">Edit</a>
+          <form action="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>?_method=delete" method="post" style="display:inline;">
+            <input type="submit" class="btn btn-xs btn-link" value="Delete">
+          </form>
+        </div>
+<% } // end if %>
       </div>
 
-<% }); %>
+<% }); // end forEach comments loop %>
 
     </div>
 
